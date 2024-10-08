@@ -27,14 +27,13 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: "npm" # Habilita el caché de npm para acelerar las instalaciones
-
     # 3. Instalar dependencias
     - name: Install dependencies
-        run: npm install
+      run: npm install
 
     # 4. Ejecutar ESLint para verificar el código
     - name: Run ESLint
-        run: npm run lint
+      run: npm run lint
 
 build:
   name: Build Project
