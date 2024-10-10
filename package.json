@@ -1,19 +1,24 @@
 {
   "name": "express2",
   "version": "1.0.0",
-  "description": "",
   "main": "index.ts",
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint .",
     "dev": "nodemon",
     "lint:fix": "eslint . --fix"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "node",
+    "express",
+    "typescropt",
+    "eslint",
+    "prettier"
+  ],
+  "author": "Santiago Alducin Villasñeor",
+  "license": "MIT",
+  "description": "Proyecto express",
   "dependencies": {
     "dotenv": "^16.4.5",
     "express": "^4.21.0"
