@@ -8,7 +8,7 @@ import {
 
 const router = Router();
 
-router.get("/student", getStudents);
+router.get("/", getStudents);
 router.post("/", createStudent);
 router.put("/:id", updateStudent);
 router.delete("/:id", deleteStudent);
