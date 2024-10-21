@@ -30,11 +30,6 @@ Ideal para desarrolladores que buscan una base sólida y bien estructurada para 
 - **Integración de Variables de Entorno**: Gestiona tus configuraciones sensibles con dotenv.
 - **Scripts Automatizados**: Ejecuta fácilmente tareas comunes con scripts predefinidos en `package.json`.
 
-## 👨‍💻 Autores
-
-- **Juan Ma** - _Desarrollador Principal_ - [GitHub](https://github.com/juanma)
-- **Equipo de Desarrollo** - _Contribuidores_
-
 ## 📂 Estructura del Proyecto
 
 ```bash
@@ -52,13 +47,6 @@ Ideal para desarrolladores que buscan una base sólida y bien estructurada para 
 ```
 
 ## 🛠️ Instalación
-
-### 1. Clonar el Repositorio
-
-```bash
-git clone https://github.com/JuanMaLR/mvc-express-IoT-2024.git
-cd mvc-express-IoT-2024
-```
 
 ### 2. Instalar Dependencias (Asegúrate de tener Node.js y npm instalados)
 
