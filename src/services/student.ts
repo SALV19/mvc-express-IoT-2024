@@ -6,8 +6,8 @@ import {
   updateStudent,
 } from "../models/student";
 
-export const findStudents = async () => {
-  return await findAllStudents();
+export const findStudents = async (limit: number, offset: number) => {
+  return await findAllStudents(limit, offset);
 };
 
 export const insert = async (student: Student) => {
