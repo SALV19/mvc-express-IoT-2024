@@ -1,22 +1,26 @@
-import { config } from "dotenv";
 import express from "express";
 import studentRoutes from "./routes/student";
 import testRoutes from "./routes/test";
 import unknownResource from "./middlewares/unknown-resource";
 import unknownError from "./middlewares/unkown-error";
+import validationError from "./middlewares/validation-errors";
+import dotenvFlow from "dotenv-flow";
 
-config();
+if (process.env.NODE_ENV != "production") {
+  dotenvFlow.config();
+}
 
 const app = express();
 
 app.use(express.json());
 
-app.use("/student", studentRoutes);
+app.use("/api/v1/student", studentRoutes);
 
 // Ruta de pruebas
-app.use("/error", testRoutes);
+app.use("/api/v1/error", testRoutes);
 
 // Middlewares
+app.use(validationError); // Error de validación
 app.use(unknownResource); // Error 404
 
 // Middleware de error
