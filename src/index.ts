@@ -6,9 +6,9 @@ import unknownError from "./middlewares/unkown-error";
 import validationError from "./middlewares/validation-errors";
 import dotenvFlow from "dotenv-flow";
 
-if (process.env.NODE_ENV != "production") {
-  dotenvFlow.config();
-}
+dotenvFlow.config();
+// if (process.env.NODE_ENV != "production") {
+// }
 
 const app = express();
 

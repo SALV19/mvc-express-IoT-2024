@@ -4,7 +4,7 @@
   "main": "index.ts",
   "scripts": {
     "build": "tsc",
-    "start": "node dist/index.js",
+    "start": "cross-env NODE_ENV=production node dist/index.js",
     "lint": "eslint .",
     "dev": "nodemon",
     "lint:fix": "eslint . --fix"
@@ -31,6 +31,7 @@
     "@tsconfig/node20": "^20.1.4",
     "@types/express": "^5.0.0",
     "@types/node": "^22.7.5",
+    "cross-env": "^7.0.3",
     "eslint": "^9.11.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
