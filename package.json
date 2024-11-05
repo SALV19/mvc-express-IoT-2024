@@ -5,6 +5,7 @@
   "scripts": {
     "build": "tsc",
     "start": "cross-env NODE_ENV=production node dist/index.js",
+    "start:render": "node dist/index.js",
     "lint": "eslint .",
     "dev": "nodemon",
     "lint:fix": "eslint . --fix"
