@@ -1,31 +1,59 @@
+import dotenvFlow from "dotenv-flow";
 import express from "express";
-import studentRoutes from "./routes/student";
+import studentRouter from "./routes/student";
 import testRoutes from "./routes/test";
 import unknownResource from "./middlewares/unknown-resource";
 import unknownError from "./middlewares/unkown-error";
 import validationError from "./middlewares/validation-errors";
-import dotenvFlow from "dotenv-flow";
+import http from "http";
+import { Server as SocketIOServer } from "socket.io";
+import cors from "cors";
 
-if (process.env.NODE_ENV != "production") {
+//Para poder acceder a las variables del ambiente
+// Cargar dotenv-flow solo si no estamos en producción
+if (process.env.NODE_ENV !== "production") {
   dotenvFlow.config();
 }
 
 const app = express();
+const server = http.createServer(app);
+const io = new SocketIOServer(server, {
+  cors: {
+    origin: "*", // Adjust this to your frontend's origin
+    methods: ["GET", "POST"],
+  },
+});
 
+// Middleware para CORS - Permite todas las solicitudes
+app.use(cors());
+// Middleware para parsear JSON
 app.use(express.json());
 
-app.use("/api/v1/student", studentRoutes);
+// Rutas de la api
+app.use("/api/v1/student", studentRouter);
 
-// Ruta de pruebas
-app.use("/api/v1/error", testRoutes);
+// Rutas de prueba
+app.use("/error", testRoutes);
+
+// WebSocket Connection
+io.on("connection", (socket) => {
+  console.log("A client connected:", socket.id);
+
+  socket.on("disconnect", () => {
+    console.log("Client disconnected:", socket.id);
+  });
+});
+
+// Make io accessible to routers/controllers
+app.set("io", io);
 
 // Middlewares
-app.use(validationError); // Error de validación
-app.use(unknownResource); // Error 404
+app.use(validationError); // Error de validacion
+app.use(unknownResource); // Error 404, recurso no encontrado
 
-// Middleware de error
+// Middlewares de error
 app.use(unknownError);
 
-app.listen(process.env.SERVER_PORT, function () {
+server.listen(process.env.SERVER_PORT, function () {
   console.log("Escuchando puerto " + process.env.SERVER_PORT);
 });
